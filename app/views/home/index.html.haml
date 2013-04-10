@@ -1,4 +1,5 @@
-%h3 Home
-- @users.each do |user|
-  %p
-    User: #{link_to user.name, user}
+%h4
+  Select the browser to generate your extension
+
+- @browser_types = ["Select Browser"] + @browser_types
+= select_tag 'browser', options_for_select(@browser_types)
