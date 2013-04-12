@@ -2,3 +2,13 @@
   You have selected 
   %b
     '#{@browser_type.capitalize}'.
+  %br/
+  If you want to add your extension code to #{@browser_type} extension, add your code in the following text area and click generate.
+%div#empty
+  &nbsp;
+%div#user_code_area
+  %b Enter/Copy your code here:
+  %div
+    %textarea{:name => "user-code", :id => "user-code", :style => "width: 700px; height: 400px;"}
+  #button
+    %input.btn-large{:type => "button", :value => 'Generate Extension', :id => "extn"}
