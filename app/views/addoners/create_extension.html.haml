@@ -9,11 +9,10 @@
 %div#user_code_area
   %b Enter/Copy your code here:
   %div#user_editor
-    %textarea{:name => "user-code", :id => "user-code", :style => "width: 700px; height: 400px;"}
+    %textarea.tinymce{:name => "user-code", :id => "user-code", :style => "width: 700px; height: 400px;"}
   %br/
   #button
     %input.btn-large{:type => "button", :value => 'Cancel', :id => "cancel_extn"}
     %input.btn-large{:type => "button", :value => 'Generate Extension', :id => "extn"}
-
-%script{:type => "text/javascript"}
-  bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+%div{:style => "display:none;"}
+= tinymce
