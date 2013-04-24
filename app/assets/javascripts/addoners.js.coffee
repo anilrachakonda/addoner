@@ -4,3 +4,9 @@
 $(document).ready (e) ->
 	$("#cancel_extn").on 'click', (e) ->
 		window.location.href = '/'
+		true
+	$("#sample-extension").on 'click', (e) ->
+		browser_type = $("#browser_type").val();
+		location.href = "/addoners/download_sample_extension?browser_type="+browser_type
+
+		true

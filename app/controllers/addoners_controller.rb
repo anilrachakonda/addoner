@@ -13,4 +13,18 @@ class AddonersController < ApplicationController
     end
   end
 
+  def download_sample_extension
+    browser_type = params[:browser_type] || nil
+    if browser_type
+      path = "#{Rails.root}"+"/public/"
+      if browser_type == "firefox"
+        path = path + "sample_firefox_extension.zip"
+        send_file path, :filename => "sample_firefox_extension.zip"
+      elsif browser_type == "chrome"
+        path = path + "sample_chrome_extension.zip"
+        send_file path, :filename => "sample_chrome_extension.zip"
+      end
+    end
+  end
+
 end

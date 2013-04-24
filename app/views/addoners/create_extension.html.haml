@@ -3,7 +3,14 @@
   %b
     '#{@browser_type.capitalize}'.
   %br/
-  Some text comes here
+  You can download the sample #{@browser_type.downcase} extension
+  %a#sample-extension
+    here
+  and check Readme file for add/installation process.
+  %input{:type => "hidden", :id => "browser_type", :value => "#{@browser_type.downcase}"}
+  %br/
+  If you want to modify the existing extension with your code, please write your code in the following editor and click Generate button.
+
 %div#empty
   &nbsp;
 %div#user_code_area
