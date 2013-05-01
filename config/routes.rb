@@ -10,6 +10,7 @@ Addoner::Application.routes.draw do
     collection do
       get :create_extension
       get :download_sample_extension
+      get :generate_extension
     end
   end
 

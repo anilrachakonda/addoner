@@ -13,8 +13,17 @@
 
 %div#empty
   &nbsp;
+
+%dev#user_indtructions
+  %b
+    = "Note:"
+    = "Write the text which you want to display with your extension."
+
+%div#empty
+  &nbsp;
+  
 %div#user_code_area
-  %b Enter/Copy your code here:
+  %b Enter/Copy your text here:
   %div#user_editor
     %textarea.tinymce{:name => "user-code", :id => "user-code", :style => "width: 700px; height: 400px;"}
   %br/

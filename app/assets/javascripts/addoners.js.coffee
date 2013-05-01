@@ -6,7 +6,11 @@ $(document).ready (e) ->
 		window.location.href = '/'
 		true
 	$("#sample-extension").on 'click', (e) ->
-		browser_type = $("#browser_type").val();
+		browser_type = $("#browser_type").val()
 		location.href = "/addoners/download_sample_extension?browser_type="+browser_type
 
 		true
+	$("#extn").on 'click', (e) ->
+		browser_type = $("#browser_type").val()
+		user_code=tinymce.get('user-code').getContent()
+		location.href = "/addoners/generate_extension?user_code="+user_code+"&browser_type="+browser_type
