@@ -26,4 +26,4 @@ available to general public:
   The new name must be in lower case.
 
 
-NOTE: Open install.rdf file and check <em:minVersion> and <em:maxVersion> under <em:targetApplication> and replace <em:minVersion> and <em:maxVersion> values with your firefox version number.
+NOTE: Open install.rdf file and check <em:minVersion> and <em:maxVersion> values under <em:targetApplication> and replace <em:minVersion> and <em:maxVersion> values with your firefox version number.
