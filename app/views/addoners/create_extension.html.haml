@@ -17,8 +17,10 @@
 %dev#user_indtructions
   %b
     = "Note:"
-    = "Write the text which you want to display with your extension."
-
+    - if @browser_type == 'firefox'
+      = "Write the text which you want to display with your extension."
+    - elsif @browser_type == 'chrome'
+      = "Write the text/html which you want to display with your extension."
 %div#empty
   &nbsp;
   

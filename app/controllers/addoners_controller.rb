@@ -20,14 +20,14 @@ class AddonersController < ApplicationController
   def download_sample_extension
     browser_type = params[:browser_type] || nil
     if browser_type
-      path = "#{Rails.root}"+"/public/user_extensions/#{browser_type}/sample_#{browser_type}_extension.zip"
+      path = "#{Rails.root}/public/user_extensions/#{browser_type}/sample_#{browser_type}_extension.zip"
       send_file path, :filename => "sample_#{browser_type}_extension.zip"
     end
   end
 
   def generate_extension
     if !params[:user_code].blank?
-      @user_code = params[:user_code]
+      @user_code = CGI.unescapeHTML(params[:user_code])
       foldername = Time.now.strftime("%d_%b_%Y_%H%M%S")
       browser_type = params[:browser_type]
       system("mkdir #{Rails.root}/public/user_extensions/#{browser_type}/#{foldername}")
@@ -41,7 +41,7 @@ class AddonersController < ApplicationController
       end
       aString = modified_file.read
       modified_file.close
-      aString.gsub!(sub_string, @user_code.gsub!(/\<p\>/, '').gsub(/\<\/p\>/, ' '))
+      aString.gsub!(sub_string, @user_code)
       if browser_type == "firefox"
         File.open("#{Rails.root}/public/user_extensions/firefox/#{foldername}/helloworld/locale/en-US/hello.dtd", "w") { |file| file << aString }
       elsif browser_type == "chrome"
