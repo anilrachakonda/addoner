@@ -51,8 +51,14 @@ class AddonersController < ApplicationController
       compress(path)
       system("mv #{Rails.root}/public/user_extensions/#{browser_type}/#{foldername}/#{foldername}.zip #{Rails.root}/public/user_extensions/#{browser_type}/")
       system("rm -rf #{Rails.root}/public/user_extensions/#{browser_type}/#{foldername}/")
-      zip_file_path = "#{Rails.root}/public/user_extensions/#{browser_type}/#{foldername}.zip"
-      send_file zip_file_path, :filename => "Extension.zip"
+      if browser_type == "firefox"
+        system("mv #{Rails.root}/public/user_extensions/#{browser_type}/#{foldername}.zip #{Rails.root}/public/user_extensions/#{browser_type}/#{foldername}.xpi")
+        xpi_file_path = "#{Rails.root}/public/user_extensions/#{browser_type}/#{foldername}.xpi"
+        send_file xpi_file_path, :filename => "Extension.xpi"
+      elsif browser_type == "chrome"
+        zip_file_path = "#{Rails.root}/public/user_extensions/#{browser_type}/#{foldername}.zip"
+        send_file zip_file_path, :filename => "Extension.zip"
+      end
     else
       redirect_to root_path
     end
